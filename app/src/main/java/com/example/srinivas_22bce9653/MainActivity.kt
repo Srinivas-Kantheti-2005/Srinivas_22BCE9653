@@ -1,5 +1,7 @@
 package com.example.srinivas_22bce9653
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,5 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     fun clickHandler(view: View) {
         Log.i("MainActivity-clickhandler", "button clicked")
+
+        var dailIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel: 7075322769"))
+        startActivity(dailIntent)
     }
 }

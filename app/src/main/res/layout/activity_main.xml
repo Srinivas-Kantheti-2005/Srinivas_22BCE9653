@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/username"/>
 
 
-<!--    These colors are deined in android os-->
+<!--    These colors are defined in android os-->
 <!--    android: textColor="@color/black"-->
 
 <!--    dp - density independent pixels-->
