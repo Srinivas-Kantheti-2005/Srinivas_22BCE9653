@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity-clickhandler", "button clicked")
 
         var dailIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel: 7075322769"))
-        startActivity(dailIntent)
+
+        var webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/"))
+        startActivity(webIntent)
     }
 }
