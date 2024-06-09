@@ -13,8 +13,8 @@
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/mywidth"
+        android:layout_height="@dimen/myheight"
         android:layout_marginStart="42dp"
         android:layout_marginTop="73dp"
         android:textColor="@color/mycolor"
@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/mywidth"
+        android:layout_height="@dimen/myheight"
         android:layout_marginTop="80dp"
         android:textColor="@color/mycolor"
         android:ems="10"
@@ -40,10 +40,12 @@
 <!--    These colors are deined in android os-->
 <!--    android: textColor="@color/black"-->
 
+<!--    dp - density independent pixels-->
+
     <Button
         android:id="@+id/loginbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/btnwidhth"
+        android:layout_height="@dimen/btnheight"
         android:textColor="@color/black"
         android:layout_marginStart="3dp"
         android:layout_marginTop="80dp"
