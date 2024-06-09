@@ -5,7 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#abc123"
     tools:context=".MainActivity">
+
+<!--    These colors are defined in android os-->
+<!--    android:textColor="@color/mycolor"-->
 
     <EditText
         android:id="@+id/username"
@@ -13,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginTop="73dp"
+        android:textColor="@color/mycolor"
         android:ems="10"
         android:hint="Username"
         android:inputType="text"
@@ -24,16 +29,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:textColor="@color/mycolor"
         android:ems="10"
         android:hint="Password"
         android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="@+id/username"
         app:layout_constraintTop_toTopOf="@+id/username"/>
 
+
+<!--    These colors are deined in android os-->
+<!--    android: textColor="@color/black"-->
+
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginStart="3dp"
         android:layout_marginTop="80dp"
         android:text="LOGIN"
