@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.content.Context
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import java.util.Locale
 
 fun updateLocale(context: Context, language: String) {
@@ -23,10 +24,16 @@ fun updateLocale(context: Context, language: String) {
     context.resources.updateConfiguration(config, context.resources.displayMetrics)
 }
 
-
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Load the saved language preference
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val language = prefs.getString("language", "en") ?: "en"
+        updateLocale(this, language)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -45,7 +52,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         changelanguage.setOnClickListener {
-            updateLocale(this, "te")
+            val newLanguage = if (language == "en") "te" else "en"
+            prefs.edit().putString("language", newLanguage).apply()
+            updateLocale(this, newLanguage)
             restartActivity()
         }
     }
@@ -58,10 +67,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun clickHandler(username: String, password: String) {
         Log.i("MainActivity-clickhandler", "button clicked")
-        if(username == "Srinivas" && password == "7075322769") {
+        if (username == "Srinivas" && password == "7075322769") {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
             val dialIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
-            val webIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/"))
             startActivity(dialIntent)
         } else {
             Toast.makeText(this, "Login Failed!!!", Toast.LENGTH_SHORT).show()
