@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity() {
         if (username == "Srinivas" && password == "7075322769") {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
             val dialIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
-            startActivity(dialIntent)
+            val weIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/"))
+            startActivity(weIntent)
         } else {
             Toast.makeText(this, "Login Failed!!!", Toast.LENGTH_SHORT).show()
         }
