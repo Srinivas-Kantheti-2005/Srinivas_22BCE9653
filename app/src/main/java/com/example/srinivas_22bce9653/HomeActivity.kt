@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         var data = intent.extras?.getString("nkey")
-        Log.i("HomeActivity", "data is = "+data)
+        Log.i("HomeActivity", "data is = "+data)    
         val homeTextView: TextView = findViewById(R.id.tvhome)
         homeTextView.setText(data)
     }
