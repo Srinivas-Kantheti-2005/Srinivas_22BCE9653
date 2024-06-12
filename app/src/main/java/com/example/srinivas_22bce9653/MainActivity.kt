@@ -1,10 +1,14 @@
 package com.example.srinivas_22bce9653
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.srinivas_22bce9653.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +19,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.i(TAG, "onCreate")
         Toast.makeText(this, "Activity Created", Toast.LENGTH_SHORT).show()
+
+        // Link the click handler to a button
+        val button = findViewById<Button>(R.id.loginbtn) // Replace 'your_button_id' with the actual ID of your button
+        button.setOnClickListener {
+            clickHandler(it)
+        }
     }
 
     override fun onStart() {
@@ -45,5 +55,29 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Log.i(TAG, "onDestroy")
         Toast.makeText(this, "Activity Destroyed", Toast.LENGTH_SHORT).show()
+    }
+
+    // Fixed clickHandler function signature
+    fun clickHandler(view: View) {
+        Log.i("MainActivity-clickhandler", "Button clicked")
+
+        // Uncomment the lines below to use dial or web intents
+        // val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
+        // val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/"))
+        // startActivity(webIntent)
+
+        val hIntent = Intent(this, HomeActivity::class.java)
+        hIntent.putExtra("mykey", "android-vit-Srinivas")
+        throw NullPointerException("demo vit exception")
+        startActivity(hIntent)
+    }
+
+    fun inflatexml() {
+        var nameEditText = EditText(this)
+        nameEditText.setHint("Enter ur username")
+        var pwdEditText = EditText(this)
+        pwdEditText.setHint("Enter ur pin")
+        val loginButton = Button(this)
+        loginButton.setText("LOGIN")
     }
 }
