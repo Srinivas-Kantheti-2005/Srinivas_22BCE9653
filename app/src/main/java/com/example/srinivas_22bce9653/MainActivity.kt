@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.content.Context
 import android.content.res.Configuration
+import android.provider.AlarmClock
 import android.widget.Toast
 import androidx.preference.PreferenceManager
 import java.util.Locale
@@ -69,9 +70,14 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity-clickhandler", "button clicked")
         if (username == "Srinivas" && password == "7075322769") {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-            val dialIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
-            val weIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/"))
-            startActivity(weIntent)
+            /*val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
+            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/"))
+            startActivity(webIntent) */
+
+            // context == history
+
+            var hIntent = Intent(this, HomeActivity::class.java)
+            startActivity(hIntent)
         } else {
             Toast.makeText(this, "Login Failed!!!", Toast.LENGTH_SHORT).show()
         }
