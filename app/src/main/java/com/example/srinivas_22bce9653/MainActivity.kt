@@ -1,4 +1,4 @@
-package com.example.lifecycleexample
+package com.example.srinivas_22bce9653
 
 import android.os.Bundle
 import android.util.Log
