@@ -70,16 +70,25 @@ class MainActivity : AppCompatActivity() {
         Log.i("MainActivity-clickhandler", "button clicked")
         if (username == "Srinivas" && password == "7075322769") {
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-            /*val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:7075322769"))
-            val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/"))
-            startActivity(webIntent) */
 
-            // context == history
-
-            var hIntent = Intent(this, HomeActivity::class.java)
+            // Create intent for HomeActivity
+            val hIntent = Intent(this, HomeActivity::class.java).apply {
+                putExtra("nkey", "Srinivas-android")
+            }
             startActivity(hIntent)
         } else {
             Toast.makeText(this, "Login Failed!!!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
         }
     }
 }
