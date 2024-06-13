@@ -1,6 +1,4 @@
-package com.example.srinivas_22bce9653.javaexs;
-
-import android.provider.ContactsContract;
+package com.example.srinivas_22bce9653.javaexs.lambdas;
 
 public class DemoLambdas {
     public static void main(String args[]) {

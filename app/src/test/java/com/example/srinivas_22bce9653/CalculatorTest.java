@@ -3,9 +3,7 @@ package com.example.srinivas_22bce9653;
 import junit.framework.TestCase;
 
 public class CalculatorTest extends TestCase {
-
     private Calculator calculator;
-
     protected void setUp() throws Exception {
         super.setUp();
         calculator = new Calculator();

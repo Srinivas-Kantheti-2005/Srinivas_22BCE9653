@@ -1,4 +1,4 @@
-package com.example.srinivas_22bce9653.javaexs;
+package com.example.srinivas_22bce9653.javaexs.lambdas;
 
 public class MessageImpl implements IMessage {
     @Override

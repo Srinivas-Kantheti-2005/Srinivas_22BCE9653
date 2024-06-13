@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var name:String = "Srinivas"
         Log.i(TAG, "onCreate")
         Toast.makeText(this, "Activity Created", Toast.LENGTH_SHORT).show()
 
