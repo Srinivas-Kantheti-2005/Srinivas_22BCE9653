@@ -1,29 +1,39 @@
 package com.example.srinivas_22bce9653
 
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView.ItemView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class wordsAdapter: RecyclerView.Adapter<wordsAdapter.wordsViewHolder>() {
+class WordsAdapter(var dataArray: Array<String>) : RecyclerView.Adapter<WordsAdapter.WordsViewHolder>() {
 
-    // Sumanth -- buy row planks from market.
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): wordsViewHolder {
-        TODO("Not yet implemented")
+    private val TAG = WordsViewHolder::class.java.simpleName
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
+        // Inflate the raw_layout_xml file in memory
+        Log.i(TAG, "Sumanth bought a row of plank")
+        val rowPlank = LayoutInflater.from(parent.context).inflate(R.layout.row_layout_item, parent, false)
+        return WordsViewHolder(rowPlank)
     }
 
-    // Daya -- keep counting the no. of items in the dataset.
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        Log.i(TAG, "Daya counted --${dataArray.size}")
+        return dataArray.size
     }
 
-    // Lokesh -- write the data on the row plank given by
-    override fun onBindViewHolder(holder: wordsViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: WordsViewHolder, position: Int) {
+        // Bind the data to the TextView in each row
+        Log.i(TAG, "Lokesh writing --"+dataArray[position]+"on the textview shown by Titas")
+        holder.tvRowItem.setText(dataArray[position])
     }
 
+    class WordsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        init {
+            Log.i("WordsAdapter", "Titas is finding the textview in a row")
+        }
 
-    // Titas -- maintain the reserve planks in the holder box.
-    class wordsViewHolder(itemView: View) : ViewHolder(itemView) {}
+        var tvRowItem: TextView = itemView.findViewById(R.id.tvRow)
+    }
 }
