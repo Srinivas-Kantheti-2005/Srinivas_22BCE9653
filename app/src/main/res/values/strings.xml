@@ -4,4 +4,7 @@
     <string name="password">Password</string>
     <string name="loginbtn">LOGIN</string>
     <string name="changelanguage">Change Language</string>
+    <string name="home">Home</string>
+    <string name="enter_test_string">Enter test String</string>
+    <string name="get_text">get text</string>
 </resources>

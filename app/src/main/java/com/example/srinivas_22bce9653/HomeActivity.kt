@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -45,5 +47,12 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         // No action needed
+    }
+
+    fun getShowText(view: View) {
+        var etUI:EditText = findViewById(R.id.etUItest)
+        var text = etUI.text.toString()
+        var tvUi:TextView = findViewById(R.id.tvUI)
+        tvUi.setText(text)
     }
 }
