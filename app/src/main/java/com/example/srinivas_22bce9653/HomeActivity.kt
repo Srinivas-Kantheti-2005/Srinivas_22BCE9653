@@ -11,6 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,7 +28,8 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(R.layout.activity_home)
         mySpinner = findViewById(R.id.spinner)  //taking handler
         myRecycle = findViewById(R.id.recyclerView)
-        myRecycle.layoutManager = LinearLayoutManager(this)
+        myRecycle.layoutManager = GridLayoutManager(this, 2)
+            //LinearLayoutManager(this)
         val wordsAdapter = WordsAdapter(dataArray)
         myRecycle.adapter = wordsAdapter
 
@@ -54,5 +56,23 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var text = etUI.text.toString()
         var tvUi:TextView = findViewById(R.id.tvUI)
         tvUi.setText(text)
+    }
+
+    // suspend itself -- resume
+    fun downloadImage() {
+        // 50
+        // 10
+        // 11-20 -- internet/ database/ image processing
+    }
+
+    //http://openweathermap.com/getWeather/city=guntur
+    fun getWeather(cityName:String) :String {
+        // query the database and get the data.
+        return "{ temp:32, windspeed:40,}"
+    }
+
+    //http://openweathermap.com/getTemp/city=25
+    fun getTemp(city:String):Int {
+        return 25
     }
 }
