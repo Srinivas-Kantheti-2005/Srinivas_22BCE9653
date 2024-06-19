@@ -3,16 +3,12 @@ package com.example.srinivas_22bce9653
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ListView
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.srinivas_22bce9653.network.MarsApi
-import com.example.srinivas_22bce9653.network.MarsApiService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -39,8 +35,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getMarsPhotos() {
         GlobalScope.launch {
 
-            var jsonString = MarsApi.retrofitService.getPhotos()
-            Log.i("homeactivity", jsonString)
+            var listMarsPhotos = MarsApi.retrofitService.getPhotos()
+            var tvHome:TextView = findViewById(R.id.tvhome)
+            tvHome.setText(listMarsPhotos.get(1).imgSrc)
+            Log.i("homeactivity", listMarsPhotos.size.toString())
         }
     }
 
