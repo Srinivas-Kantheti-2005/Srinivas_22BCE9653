@@ -11,20 +11,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.srinivas_22bce9653.network.MarsApi
+import com.example.srinivas_22bce9653.network.MarsApiService
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
-    AdapterView.OnItemClickListener {
+class HomeActivity : AppCompatActivity() {
 
     var TAG = HomeActivity::class.java.simpleName  //"Home Activity"
-    lateinit var mySpinner: Spinner
-    lateinit var mylistView: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        mySpinner = findViewById(R.id.spinner)  //taking handler
-        mylistView = findViewById(R.id.listView)
-        mylistView.isClickable = true
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -32,27 +32,20 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             insets
         }
 
-        mySpinner.onItemSelectedListener = this
-        mylistView.setOnItemClickListener(this)
-        /* var data = intent.extras?.getString("nkey")
-        Log.i("HomeActivity", "data is = "+data)
-        val homeTextView: TextView = findViewById(R.id.tvhome)
-        homeTextView.setText(data) */
-
-
     }
 
-    override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        var item:String = adapter?.getItemAtPosition(position).toString()
-        Log.i(TAG, item)
+
+
+    private fun getMarsPhotos() {
+        GlobalScope.launch {
+
+            var jsonString = MarsApi.retrofitService.getPhotos()
+            Log.i("homeactivity", jsonString)
+        }
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+    fun getJson(view: View) {
+        getMarsPhotos()
     }
 
-    override fun onItemClick(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        var item:String = adapter?.getItemAtPosition(position).toString()
-        Log.i(TAG, item)
-    }
 }
