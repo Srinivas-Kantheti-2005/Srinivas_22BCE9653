@@ -3,7 +3,6 @@ package com.example.srinivas_22bce9653
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -36,8 +35,8 @@ class HomeActivity : AppCompatActivity() {
         GlobalScope.launch {
 
             var listMarsPhotos = MarsApi.retrofitService.getPhotos()
-            var tvHome:TextView = findViewById(R.id.tvhome)
-            tvHome.setText(listMarsPhotos.get(1).imgSrc)
+//            var tvHome:TextView = findViewById(R.id.tvhome)
+//            tvHome.setText(listMarsPhotos.get(1).imgSrc)
             Log.i("homeactivity", listMarsPhotos.size.toString())
         }
     }
