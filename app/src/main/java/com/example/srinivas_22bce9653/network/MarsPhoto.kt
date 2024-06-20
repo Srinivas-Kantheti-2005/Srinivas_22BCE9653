@@ -1,14 +1,15 @@
 package com.example.srinivas_22bce9653.network
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.squareup.moshi.Json
 
 
 // serializable = balloon -- inflate -- make the object transport ready
 // inflate -- deserialization -- autocad - serial numbers on the floppy
-@Serializable
+
+//break down our project based into independently testable cases -- small, discrete, independent
+
 data class MarsPhoto(
     val id: String,
-    @SerialName(value = "img_src")
+    @Json(name = "img_src")
     val imgSrc: String
 )
