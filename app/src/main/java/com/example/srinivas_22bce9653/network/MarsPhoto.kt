@@ -3,9 +3,9 @@ package com.example.srinivas_22bce9653.network
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// serialization = balloon - inflate -- make the object transport ready
-// inflate -- deserialization -- autocad - serial number on the floppy
 
+// serializable = balloon -- inflate -- make the object transport ready
+// inflate -- deserialization -- autocad - serial numbers on the floppy
 @Serializable
 data class MarsPhoto(
     val id: String,

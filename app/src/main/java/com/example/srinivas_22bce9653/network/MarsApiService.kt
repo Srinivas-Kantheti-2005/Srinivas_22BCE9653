@@ -15,15 +15,13 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface MarsApiService {
-    @GET("photos")
-    suspend fun getPhotos():List<MarsPhoto>
+    @GET("photos") //endpoint
+    suspend fun getPhotos(): List<MarsPhoto>
 }
+
 // api = function = method
 object MarsApi {
     val retrofitService : MarsApiService by lazy {
         retrofit.create(MarsApiService::class.java)
     }
-
 }
-
-
