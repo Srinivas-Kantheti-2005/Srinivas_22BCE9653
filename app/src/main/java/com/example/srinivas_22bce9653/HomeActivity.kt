@@ -46,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
 //            var tvhome:TextView = findViewById(R.id.tvhome)
 //            tvhome.setText(listMarsPhoto.get(1).imgSrc)
             Log.i("homeactivity", listMarsPhoto.size.toString())
+            Log.i("homeactivity-url", listMarsPhoto.get(1).imgSrc)
         }
     }
 
