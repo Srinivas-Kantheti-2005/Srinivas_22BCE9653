@@ -3,10 +3,12 @@ package com.example.srinivas_22bce9653
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.srinivas_22bce9653.databinding.ActivityHomeBinding
@@ -23,19 +25,20 @@ class HomeActivity : AppCompatActivity() {
     var TAG = HomeActivity::class.java.simpleName  //"Home Activity"
 
     private lateinit var binding: ActivityHomeBinding
+    val photoMarsDatabinding = MarsPhoto("007", "moonimage.com")
 
     //lateinit var marsRecyclerView:RecyclerView
     lateinit var marsAdapter: MarsAdapter
     lateinit var photos: List<MarsPhoto>
-    //lateinit var imageView: ImageView
+    lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        //setContentView(R.layout.activity_home)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        val binding: ActivityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+//        var homeTextView:TextView = findViewById(R.id.tvhome)
+//        homeTextView.setText(photoMarsDatabinding.imgSrc)
+        binding.marsphotoxml = photoMarsDatabinding
 
         //imageView = findViewById(R.id.imageView)
         //marsRecyclerView = findViewById(R.id.recyclerViewUrls)
