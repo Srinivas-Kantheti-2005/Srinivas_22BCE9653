@@ -3,6 +3,7 @@ package com.example.srinivas_22bce9653
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.srinivas_22bce9653.database.Item
 import com.example.srinivas_22bce9653.database.ItemDao
@@ -29,8 +30,9 @@ class HomeActivity : AppCompatActivity() {
         var database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-        binding.tvhome.setText(""+viewModel.count)
+        viewModel.seconds.observe(this, sescObserver)
 
+        //binding.tvhome.setText(""+viewModel.count)
         binding.btnInc.setOnClickListener {
             //count++
             viewModel.IncrementCount()
@@ -43,6 +45,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnFind.setOnClickListener {
             findItemDb(21)
+        }
+
+        binding.btnTimer.setOnClickListener {
+            viewModel.startTimer()
+            binding.tvhome.setText(""+viewModel.seconds)
         }
     }
 
@@ -57,6 +64,13 @@ class HomeActivity : AppCompatActivity() {
         GlobalScope.launch {
             var item = Item(21,"fruits",11.11,11)
             dao.insert(item)
+        }
+    }
+
+    val sescObserver: Observer<Int> = object: Observer<Int> {
+        override fun onChanged(observedValue: Int) {
+            //receiving the update/ notification
+            binding.tvhome.setText(observedValue.toString())
         }
     }
 }
