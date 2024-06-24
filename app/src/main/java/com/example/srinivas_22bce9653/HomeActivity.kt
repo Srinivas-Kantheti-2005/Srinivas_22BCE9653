@@ -3,6 +3,7 @@ package com.example.srinivas_22bce9653
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.srinivas_22bce9653.database.Item
 import com.example.srinivas_22bce9653.database.ItemDao
 import com.example.srinivas_22bce9653.database.ItemRoomDatabase
@@ -16,6 +17,8 @@ class HomeActivity : AppCompatActivity() {
     var TAG = HomeActivity::class.java.simpleName  //"Home Activity"
     private lateinit var binding: ActivityHomeBinding
     lateinit var dao: ItemDao
+    lateinit var viewModel: HomeViewModel
+    var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,16 @@ class HomeActivity : AppCompatActivity() {
         setContentView(view)
         var database = ItemRoomDatabase.getDatabase(this)
         dao = database.itemDao()
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+
+        //binding.tvhome.setText(""+viewModel.count)
+
+        binding.btnInc.setOnClickListener {
+            count++
+            //viewModel.IncrementCount()
+            binding.tvhome.setText(""+count)
+            //binding.tvhome.setText(""+viewModel.count)
+        }
 
         binding.btnDbInsert.setOnClickListener {
             insertDataDb()
