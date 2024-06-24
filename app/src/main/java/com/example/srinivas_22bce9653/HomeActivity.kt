@@ -7,7 +7,9 @@ import com.example.srinivas_22bce9653.database.Item
 import com.example.srinivas_22bce9653.database.ItemDao
 import com.example.srinivas_22bce9653.database.ItemRoomDatabase
 import com.example.srinivas_22bce9653.databinding.ActivityHomeBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
@@ -26,6 +28,17 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnDbInsert.setOnClickListener {
             insertDataDb()
+        }
+
+        binding.btnFind.setOnClickListener {
+            findItemDb(21)
+        }
+    }
+
+    private fun findItemDb(id: Int) {
+        GlobalScope.launch(Dispatchers.Main) {
+            var item = dao.getItem(id).first()
+            binding.tvhome.setText(item.itemName)
         }
     }
 
