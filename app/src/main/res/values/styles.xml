@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Styles">
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">#f4a</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+</resources>
